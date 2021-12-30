@@ -3,10 +3,8 @@ package com.example.airbnb.controller;
 import com.example.airbnb.model.JwtResponse;
 import com.example.airbnb.model.Role;
 import com.example.airbnb.model.User;
-import com.example.airbnb.model.VerificationToken;
 import com.example.airbnb.service.RoleService;
 import com.example.airbnb.service.UserService;
-import com.example.airbnb.service.VerificationTokenService;
 import com.example.airbnb.service.impl.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -22,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -37,8 +34,6 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private VerificationTokenService verificationTokenService;
 
     @Autowired
     private JwtService jwtService;
@@ -60,7 +55,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user, BindingResult bindingResult) {
+    public ResponseEntity<User> createUser(@RequestBody User user, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -87,9 +82,6 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setConfirmPassword(passwordEncoder.encode(user.getConfirmPassword()));
         userService.save(user);
-        VerificationToken token = new VerificationToken(user);
-        token.setExpiryDate(10);
-        verificationTokenService.save(token);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
     @PostMapping("/login")
