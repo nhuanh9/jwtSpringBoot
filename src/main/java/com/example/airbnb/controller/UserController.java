@@ -53,6 +53,11 @@ public class UserController {
         Iterable<User> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+    @GetMapping("/admin/users")
+    public ResponseEntity<Iterable<User>> showAllUserByAdmin() {
+        Iterable<User> users = userService.findAll();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@RequestBody User user, BindingResult bindingResult) {
