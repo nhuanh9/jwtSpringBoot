@@ -44,4 +44,10 @@ public class BlogController {
         return new ResponseEntity( HttpStatus.OK);
     }
 
+    @GetMapping("/search-by-content")
+    public ResponseEntity findAllByContentContaining(@RequestParam String content) {
+        return new ResponseEntity(blogService.findAllByContentContaining(content), HttpStatus.OK);
+    }
+
+
 }

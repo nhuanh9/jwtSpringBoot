@@ -40,4 +40,9 @@ public class BlogServiceImpl implements IBlogService {
     public Page<Blog> findAllByNameContaining(Pageable pageable, String name) {
         return null;
     }
+
+    @Override
+    public Iterable<Blog> findAllByContentContaining(String content) {
+        return blogRepository.findAllByContentContaining(content);
+    }
 }
