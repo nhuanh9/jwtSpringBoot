@@ -34,7 +34,6 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-
     @Autowired
     private JwtService jwtService;
 
@@ -46,7 +45,6 @@ public class UserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
 
     @GetMapping("/users")
     public ResponseEntity<Iterable<User>> showAllUser() {
