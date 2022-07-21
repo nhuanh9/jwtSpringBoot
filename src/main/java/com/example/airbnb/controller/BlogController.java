@@ -20,6 +20,11 @@ public class BlogController {
         return new ResponseEntity(blogService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/find-all-public-status")
+    public ResponseEntity findAllPublicStatus() {
+        return new ResponseEntity(blogService.findAllByStatusPublic(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity save(@RequestBody Blog blog) {
         blogService.save(blog);
@@ -41,7 +46,7 @@ public class BlogController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         blogService.remove(id);
-        return new ResponseEntity( HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/search-by-content")
@@ -49,5 +54,13 @@ public class BlogController {
         return new ResponseEntity(blogService.findAllByContentContaining(content), HttpStatus.OK);
     }
 
+    @GetMapping("/search-by-day")
+    public ResponseEntity findAllByDayCreate(@RequestParam String day) {
+        return new ResponseEntity(blogService.findAllByDayCreate(day + '%'), HttpStatus.OK);
+    }
 
+    @GetMapping("/search-by-user-id")
+    public ResponseEntity findAllByUserId(@RequestParam Long id) {
+        return new ResponseEntity(blogService.findAllByUserId(id), HttpStatus.OK);
+    }
 }

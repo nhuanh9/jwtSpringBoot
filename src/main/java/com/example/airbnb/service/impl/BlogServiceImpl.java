@@ -45,4 +45,21 @@ public class BlogServiceImpl implements IBlogService {
     public Iterable<Blog> findAllByContentContaining(String content) {
         return blogRepository.findAllByContentContaining(content);
     }
+
+    @Override
+    public Iterable<Blog> findAllByDayCreate(String day) {
+        return blogRepository.findAllByDayCreate(day);
+    }
+
+    @Override
+    public Iterable<Blog> findAllByUserId(Long id) {
+        return blogRepository.findAllByUserId(id);
+    }
+
+    @Override
+    public Iterable<Blog> findAllByStatusPublic() {
+        return blogRepository.findAllByStatusPublic();
+    }
+
+
 }
