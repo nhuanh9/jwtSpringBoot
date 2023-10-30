@@ -1,0 +1,116 @@
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+.header {
+    border-bottom: 1px solid lightgray;
+    background: #35363a;
+}
+
+.logo img {
+    width: 80px;
+}
+
+.slide {
+    position: absolute;
+    height: 300px;
+    width: 100%;
+    top: 20px;
+    margin-left: 20px;
+    display: flex;
+}
+
+.slide-item {
+    background: rgb(0, 145, 255);
+    background: linear-gradient(to right, rgb(219, 216, 216) 0%, rgb(138, 138, 142) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bdae49', endColorstr='#d2ff52', GradientType=1);
+    display: flex;
+    height: 260px;
+    width: 26%;
+    border-radius: 10px;
+    box-shadow: -0.5rem 0 0.5rem rgba(0, 0, 0, 0.5);
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+}
+
+.slide-item:not(:first-child) {
+    margin-left: -50px;
+}
+
+.slide-item:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+}
+
+.slide-item:hover ~ .slide-item {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+}
+.card {
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+h3 {
+    font-weight: bolder;
+}
+
+.view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin-left: 50%;
+    margin-top: 30%;
+    transform: translateX(-50%);
+    display: none;
+    transition: 0.4s !important;
+}
+
+.card:hover .view{
+    display: block;
+}
+
+.card:hover{
+    padding: 8px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.foot {
+    background: #35363a !important;
+    color: white;
+}
+
+.menu {
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(148,132,148,1);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(148,132,148,1);
+    box-shadow: 0px 1px 6px 0px rgba(148,132,148,1);
+}
+
+
+.backtotop {
+    position: fixed;
+    display: none;
+    bottom: 0px;
+    right: 50%;
+    border-radius: 50%;
+    transform: translateX(50%);
+    cursor: pointer;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 1px 6px 0px rgb(255, 255, 255);
+    -moz-box-shadow: 0px 1px 6px 0px rgb(255, 255, 255);
+    box-shadow: 0px 1px 6px 0px rgb(255, 255, 255);
+
+}
+.backtotop i {
+    color: #35363a;
+    font-size: 40px;
+}
